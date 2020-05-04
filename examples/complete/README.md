@@ -1,47 +1,9 @@
-# Terraform AWS VPN module
-
-We are following the hub-spoke(s) (aka [star network][1]) network topology
-model.
-
-This module joins our other two modules for handling the Transit Gateway "hub"
-and "satellite" nodes:
-
-- [terraform-aws-transit-gateway-hub][2]
-- [terraform-aws-transit-gateway-satellite][3]
-
-Specifically, we are attaching the VPN connection to the TGW by manipulating
-the VPN configuration directly, as there isn't a resource for explicitly doing
-so, like in the case of the VPC attachments. Sadly, this is a [limitation on the
-AWS side][4].
-
-The VPN related resources handled by this module are provisioned and configured
-in the "hub" node.
-
-Check out some use cases in the [examples](/examples/).
-
-## Caveats
-
-__Routing:__ When the VPN is attached to the TGW, there can be no static routes
-configured as the routing needs to be added through the TGW API.
-
-## Assumptions
-
-### Credentials
-
-The module starts from the assumption that the `aws_login_profile` allows the
-user to assume the necessary IAM roles, as required, to make the necessary
-changes.
-
-You can read more about how Terraform handles this [here][5].
-
-Obviously, all the [supported authentication][6] methods can also be used.
+# Complete test case for the VPN module
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Providers
 
-| Name | Version |
-|------|---------|
-| aws | n/a |
+No provider.
 
 ## Inputs
 
@@ -68,17 +30,6 @@ Obviously, all the [supported authentication][6] methods can also be used.
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| customer\_gateway\_id | ID of the Customer Gateway |
-| vpn\_connection | VPN connection details |
-| vpn\_gateway\_id | ID of the VPN Gateway |
+No output.
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-[1]: https://en.wikipedia.org/wiki/Star_network
-[2]: https://github.com/Flaconi/terraform-aws-transit-gateway-hub
-[3]: https://github.com/Flaconi/terraform-aws-transit-gateway-satellite
-[4]: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-transitgatewayattachment.html
-[5]: https://www.terraform.io/docs/configuration/modules.html#passing-providers-explicitly
-[6]: https://www.terraform.io/docs/providers/aws/index.html#authentication
