@@ -1,4 +1,4 @@
-# Terraform AWS VPN module
+# Terraform AWS Transit Gateway VPN module
 
 We are following the hub-spoke(s) (aka [star network][1]) network topology
 model.
