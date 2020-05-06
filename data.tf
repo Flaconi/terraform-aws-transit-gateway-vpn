@@ -19,3 +19,10 @@ data "aws_ec2_transit_gateway" "this" {
     values = [data.aws_ram_resource_share.this.tags.transit-gateway-id]
   }
 }
+
+data "aws_ec2_transit_gateway_route_table" "this" {
+  filter {
+    name   = "transit-gateway-id"
+    values = [data.aws_ec2_transit_gateway.this.id]
+  }
+}

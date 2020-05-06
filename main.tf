@@ -19,8 +19,19 @@ resource "aws_vpn_connection" "this" {
   tags                  = merge(var.tags, map("Name", var.name))
 }
 
-resource "aws_vpn_connection_route" "this" {
-  count                  = var.static_routes_only ? length(var.static_routes_destinations) : 0
-  vpn_connection_id      = aws_vpn_connection.this.id
-  destination_cidr_block = element(var.static_routes_destinations, count.index)
+resource "aws_ec2_transit_gateway_route_table_association" "this" {
+  transit_gateway_attachment_id  = aws_vpn_connection.this.transit_gateway_attachment_id
+  transit_gateway_route_table_id = data.aws_ec2_transit_gateway_route_table.this.id
+}
+
+resource "aws_ec2_transit_gateway_route_table_propagation" "this" {
+  transit_gateway_attachment_id  = aws_vpn_connection.this.transit_gateway_attachment_id
+  transit_gateway_route_table_id = data.aws_ec2_transit_gateway_route_table.this.id
+}
+
+resource "aws_ec2_transit_gateway_route" "this" {
+  count                          = var.static_routes_only ? length(var.static_routes_destinations) : 0
+  destination_cidr_block         = element(var.static_routes_destinations, count.index)
+  transit_gateway_attachment_id  = aws_vpn_connection.this.transit_gateway_attachment_id
+  transit_gateway_route_table_id = data.aws_ec2_transit_gateway_route_table.this.id
 }
