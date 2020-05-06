@@ -54,11 +54,13 @@ variable "static_routes_destinations" {
 variable "tunnel1_inside_cidr" {
   description = "A size /30 CIDR block from the 169.254.0.0/16 range"
   type        = string
+  default     = null
 }
 
 variable "tunnel2_inside_cidr" {
   description = "A size /30 CIDR block from the 169.254.0.0/16 range"
   type        = string
+  default     = null
 }
 
 variable "tunnel1_preshared_key" {
