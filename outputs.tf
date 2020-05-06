@@ -1,8 +1,3 @@
-output "vpn_gateway_id" {
-  description = "ID of the VPN Gateway"
-  value       = element(concat(aws_vpn_gateway.this.*.id, list("")), 0)
-}
-
 output "customer_gateway_id" {
   description = "ID of the Customer Gateway"
   value       = element(concat(aws_customer_gateway.this.*.id, list("")), 0)

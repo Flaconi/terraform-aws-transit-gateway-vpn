@@ -11,10 +11,7 @@ module "vpn" {
 
   name = var.name
 
-  vgw_vpc_name_to_attach = var.vgw_vpc_name_to_attach
-  vgw_az                 = var.vgw_az
-  vgw_asn                = var.vgw_asn
-  subnet_filters         = var.subnet_filters
+  subnet_filters = var.subnet_filters
 
   cgw_bgp_asn    = var.cgw_bgp_asn
   cgw_ip_address = var.cgw_ip_address

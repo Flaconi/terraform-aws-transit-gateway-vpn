@@ -1,12 +1,5 @@
 provider "aws" {}
 
-resource "aws_vpn_gateway" "this" {
-  vpc_id            = data.aws_vpc.this.id
-  availability_zone = var.vgw_az
-  amazon_side_asn   = var.vgw_asn
-  tags              = merge(var.tags, map("Name", var.name))
-}
-
 resource "aws_customer_gateway" "this" {
   bgp_asn    = var.cgw_bgp_asn
   ip_address = var.cgw_ip_address
@@ -24,12 +17,6 @@ resource "aws_vpn_connection" "this" {
   tunnel1_preshared_key = var.tunnel1_preshared_key
   tunnel2_preshared_key = var.tunnel2_preshared_key
   tags                  = merge(var.tags, map("Name", var.name))
-}
-
-resource "aws_vpn_gateway_route_propagation" "this" {
-  count          = length(data.aws_route_table.this[*].route_table_id)
-  vpn_gateway_id = aws_vpn_gateway.this.id
-  route_table_id = element(data.aws_route_table.this[*].route_table_id, count.index)
 }
 
 resource "aws_vpn_connection_route" "this" {

@@ -19,17 +19,17 @@ No provider.
 | tunnel1\_preshared\_key | Will be stored in the state as plaintext. Must be between 8 & 64 chars and can't start with zero(0). Allowed characters are alphanumeric, periods(.) and underscores(\_) | `string` | n/a | yes |
 | tunnel2\_inside\_cidr | A size /30 CIDR block from the 169.254.0.0/16 range | `string` | n/a | yes |
 | tunnel2\_preshared\_key | Will be stored in the state as plaintext. Must be between 8 & 64 chars and can't start with zero(0). Allowed characters are alphanumeric, periods(.) and underscores(\_) | `string` | n/a | yes |
-| vgw\_asn | The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN. | `string` | n/a | yes |
-| vgw\_vpc\_name\_to\_attach | Name of the VPC to be attached to the VPN Gateway (VGW) | `string` | n/a | yes |
 | role\_to\_assume | IAM role name to assume (eg. ASSUME-ROLE-HUB) | `string` | `""` | no |
 | static\_routes\_destinations | List of CIDRs to be routed into the VPN tunnel. | `list` | `[]` | no |
 | static\_routes\_only | Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP | `bool` | `false` | no |
 | subnet\_filters | List of maps selecting the subnet(s) for which the routing will be added | <pre>list(object({<br>    name   = string<br>    values = list(string)<br>  }))<br></pre> | <pre>[<br>  {<br>    "name": "tag:Name",<br>    "values": [<br>      "private"<br>    ]<br>  }<br>]<br></pre> | no |
 | tags | Map of custom tags for the provisioned resources | `map` | `{}` | no |
-| vgw\_az | Choice between eu-central-1a & eu-central-1b for provisioning the Virtual Private Gateway | `string` | `"eu-central-1a"` | no |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| customer\_gateway\_id | ID of the Customer Gateway |
+| vpn\_connection | VPN connection details |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

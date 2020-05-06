@@ -23,25 +23,11 @@ variable "tags" {
   default     = {}
 }
 
-variable "vgw_vpc_name_to_attach" {
-  description = "Name of the VPC to be attached to the VPN Gateway (VGW)"
-  type        = string
-}
-
-variable "vgw_az" {
-  description = "Choice between eu-central-1a & eu-central-1b for provisioning the Virtual Private Gateway"
-  type        = string
-  default     = "eu-central-1a"
-}
-variable "vgw_asn" {
-  description = "The Autonomous System Number (ASN) for the Amazon side of the gateway. If you don't specify an ASN, the virtual private gateway is created with the default ASN."
-  type        = string
-  default     = null
-}
 variable "cgw_bgp_asn" {
   description = "The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN)."
   type        = string
 }
+
 variable "cgw_ip_address" {
   description = "IP address of the client VPN endpoint"
   type        = string
@@ -51,11 +37,13 @@ variable "transit_gateway_hub_name" {
   description = "Name of the Transit Gateway to attach the VPN to"
   type        = string
 }
+
 variable "static_routes_only" {
   description = "Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP"
   type        = bool
   default     = false
 }
+
 variable "static_routes_destinations" {
   description = "List of CIDRs to be routed into the VPN tunnel."
   type        = list
@@ -78,6 +66,7 @@ variable "tunnel1_preshared_key" {
   default     = null
   type        = string
 }
+
 variable "tunnel2_preshared_key" {
   description = "Will be stored in the state as plaintext. Must be between 8 & 64 chars and can't start with zero(0). Allowed characters are alphanumeric, periods(.) and underscores(_)"
   default     = null

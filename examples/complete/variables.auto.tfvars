@@ -1,8 +1,5 @@
-aws_login_profile      = "login"
-name                   = "test-vpn"
-vgw_vpc_name_to_attach = "default"
-vgw_az                 = "eu-central-1a"
-vgw_asn                = 7224
+aws_login_profile = "login"
+name              = "test-vpn"
 subnet_filters = [
   {
     name   = "tag:Name"
