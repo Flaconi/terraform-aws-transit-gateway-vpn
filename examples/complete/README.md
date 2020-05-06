@@ -22,7 +22,6 @@ No provider.
 | role\_to\_assume | IAM role name to assume (eg. ASSUME-ROLE-HUB) | `string` | `""` | no |
 | static\_routes\_destinations | List of CIDRs to be routed into the VPN tunnel. | `list` | `[]` | no |
 | static\_routes\_only | Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP | `bool` | `false` | no |
-| subnet\_filters | List of maps selecting the subnet(s) for which the routing will be added | <pre>list(object({<br>    name   = string<br>    values = list(string)<br>  }))<br></pre> | <pre>[<br>  {<br>    "name": "tag:Name",<br>    "values": [<br>      "private"<br>    ]<br>  }<br>]<br></pre> | no |
 | tags | Map of custom tags for the provisioned resources | `map` | `{}` | no |
 
 ## Outputs

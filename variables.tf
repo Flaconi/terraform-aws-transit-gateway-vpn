@@ -72,17 +72,3 @@ variable "tunnel2_preshared_key" {
   default     = null
   type        = string
 }
-
-variable "subnet_filters" {
-  description = "List of maps selecting the subnet(s) for which the routing will be added"
-  type = list(object({
-    name   = string
-    values = list(string)
-  }))
-  default = [
-    {
-      name   = "tag:Name"
-      values = ["private"]
-    }
-  ]
-}

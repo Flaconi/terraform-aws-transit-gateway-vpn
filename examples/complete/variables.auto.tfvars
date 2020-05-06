@@ -1,11 +1,5 @@
 aws_login_profile = "login"
 name              = "test-vpn"
-subnet_filters = [
-  {
-    name   = "tag:Name"
-    values = ["*private*"]
-  },
-]
 
 cgw_bgp_asn    = 65000
 cgw_ip_address = "1.1.1.1"

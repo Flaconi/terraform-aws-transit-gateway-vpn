@@ -11,8 +11,6 @@ module "vpn" {
 
   name = var.name
 
-  subnet_filters = var.subnet_filters
-
   cgw_bgp_asn    = var.cgw_bgp_asn
   cgw_ip_address = var.cgw_ip_address
 
