@@ -6,6 +6,7 @@ output "customer_gateway_id" {
 output "vpn_connection" {
   description = "VPN connection details"
   value = {
+    id                            = element(concat(aws_vpn_connection.this.*.id, list("")), 0)
     transit_gateway_attachment_id = element(concat(aws_vpn_connection.this.*.transit_gateway_attachment_id, list("")), 0)
     tunnel1_address               = element(concat(aws_vpn_connection.this.*.tunnel1_address, list("")), 0)
     tunnel1_cgw_inside_address    = element(concat(aws_vpn_connection.this.*.tunnel1_cgw_inside_address, list("")), 0)
