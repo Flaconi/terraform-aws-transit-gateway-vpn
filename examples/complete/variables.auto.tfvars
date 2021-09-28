@@ -1,5 +1,4 @@
-aws_login_profile = "login"
-name              = "test-vpn"
+name = "test-vpn"
 
 cgw_bgp_asn    = 65000
 cgw_ip_address = "1.1.1.1"

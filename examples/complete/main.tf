@@ -5,7 +5,6 @@ module "vpn" {
 
   providers = { aws = aws }
 
-  aws_login_profile  = var.aws_login_profile
   role_to_assume     = var.role_to_assume
   allowed_account_id = var.allowed_account_id
 
