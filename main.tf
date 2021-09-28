@@ -1,5 +1,3 @@
-provider "aws" {}
-
 resource "aws_customer_gateway" "this" {
   bgp_asn    = var.cgw_bgp_asn
   ip_address = var.cgw_ip_address
