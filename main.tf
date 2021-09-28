@@ -1,10 +1,8 @@
-provider "aws" {}
-
 resource "aws_customer_gateway" "this" {
   bgp_asn    = var.cgw_bgp_asn
   ip_address = var.cgw_ip_address
   type       = "ipsec.1"
-  tags       = merge(var.tags, map("Name", var.name))
+  tags       = merge(var.tags, { Name = var.name })
 }
 
 resource "aws_vpn_connection" "this" {
@@ -16,7 +14,7 @@ resource "aws_vpn_connection" "this" {
   tunnel2_inside_cidr   = var.tunnel2_inside_cidr
   tunnel1_preshared_key = var.tunnel1_preshared_key
   tunnel2_preshared_key = var.tunnel2_preshared_key
-  tags                  = merge(var.tags, map("Name", var.name))
+  tags                  = merge(var.tags, { Name = var.name })
 }
 
 resource "aws_ec2_transit_gateway_route_table_association" "this" {

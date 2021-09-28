@@ -9,17 +9,13 @@ variable "role_to_assume" {
   default     = ""
 }
 
-variable "aws_login_profile" {
-  description = "Name of the AWS login profile as seen under ~/.aws/config"
-}
-
 variable "name" {
   description = "Generic name to be given to the provisioned resources"
   type        = string
 }
 variable "tags" {
   description = "Map of custom tags for the provisioned resources"
-  type        = map
+  type        = map(string)
   default     = {}
 }
 
@@ -46,7 +42,7 @@ variable "static_routes_only" {
 
 variable "static_routes_destinations" {
   description = "List of CIDRs to be routed into the VPN tunnel."
-  type        = list
+  type        = list(string)
   default     = []
 }
 
