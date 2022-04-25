@@ -28,9 +28,13 @@ configured as the routing needs to be added through the TGW API.
 
 ### Credentials
 
-The module starts from the assumption that the `aws_login_profile` allows the
+The module starts from the assumption that your default aws profile allows the
 user to assume the necessary IAM roles, as required, to make the necessary
-changes.
+changes. You can use profile of your need if you set `AWS_PROFILE` or `AWS_DEFAULT_PROFILE`, e.g.:
+
+```shell
+export AWS_DEFAULT_PROFILE=login
+```
 
 You can read more about how Terraform handles this [here][5].
 
@@ -42,13 +46,13 @@ Obviously, all the [supported authentication][6] methods can also be used.
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 3 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4 |
 
 ## Modules
 
