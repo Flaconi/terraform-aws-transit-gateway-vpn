@@ -34,6 +34,11 @@ variable "transit_gateway_hub_name" {
   type        = string
 }
 
+variable "transit_gateway_satellite_account_id" {
+  description = "AWS account ID for which the module should share TGW resource"
+  type        = string
+}
+
 variable "static_routes_only" {
   description = "Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP"
   type        = bool

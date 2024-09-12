@@ -4,7 +4,7 @@ module "tgw" {
   name = var.transit_gateway_hub_name
 
   aws_account_id_hub       = var.allowed_account_id
-  aws_account_id_satellite = []
+  aws_account_id_satellite = [var.transit_gateway_satellite_account_id]
 }
 
 module "vpn" {
