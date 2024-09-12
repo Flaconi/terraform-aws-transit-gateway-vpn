@@ -11,7 +11,7 @@ data "aws_ec2_transit_gateway" "this" {
 
   filter {
     name   = "owner-id"
-    values = [var.allowed_account_id]
+    values = [var.transit_gateway_hub_account_id]
   }
 
   filter {

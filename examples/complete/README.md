@@ -3,7 +3,10 @@
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5 |
 
 ## Providers
 
@@ -13,6 +16,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_tgw"></a> [tgw](#module\_tgw) | github.com/flaconi/terraform-aws-transit-gateway-hub.git | v1.6.0 |
 | <a name="module_vpn"></a> [vpn](#module\_vpn) | ../../ | n/a |
 
 ## Resources
@@ -42,6 +46,7 @@ No resources.
 | Name | Description |
 |------|-------------|
 | <a name="output_customer_gateway_id"></a> [customer\_gateway\_id](#output\_customer\_gateway\_id) | ID of the Customer Gateway |
+| <a name="output_transit_gateway_id"></a> [transit\_gateway\_id](#output\_transit\_gateway\_id) | ID of the used Transit Gateway |
 | <a name="output_vpn_connection"></a> [vpn\_connection](#output\_vpn\_connection) | VPN connection details |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

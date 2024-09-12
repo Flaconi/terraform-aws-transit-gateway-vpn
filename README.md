@@ -45,14 +45,14 @@ Obviously, all the [supported authentication][6] methods can also be used.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 4 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 4 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 5 |
 
 ## Modules
 
@@ -75,12 +75,11 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_allowed_account_id"></a> [allowed\_account\_id](#input\_allowed\_account\_id) | AWS account ID for which this module can be executed | `string` | n/a | yes |
 | <a name="input_cgw_bgp_asn"></a> [cgw\_bgp\_asn](#input\_cgw\_bgp\_asn) | The gateway's Border Gateway Protocol (BGP) Autonomous System Number (ASN). | `string` | n/a | yes |
 | <a name="input_cgw_ip_address"></a> [cgw\_ip\_address](#input\_cgw\_ip\_address) | IP address of the client VPN endpoint | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Generic name to be given to the provisioned resources | `string` | n/a | yes |
+| <a name="input_transit_gateway_hub_account_id"></a> [transit\_gateway\_hub\_account\_id](#input\_transit\_gateway\_hub\_account\_id) | AWS account ID of Transit Gateway owner | `string` | n/a | yes |
 | <a name="input_transit_gateway_hub_name"></a> [transit\_gateway\_hub\_name](#input\_transit\_gateway\_hub\_name) | Name of the Transit Gateway to attach the VPN to | `string` | n/a | yes |
-| <a name="input_role_to_assume"></a> [role\_to\_assume](#input\_role\_to\_assume) | IAM role name to assume (eg. ASSUME-ROLE-HUB) | `string` | `""` | no |
 | <a name="input_static_routes_destinations"></a> [static\_routes\_destinations](#input\_static\_routes\_destinations) | List of CIDRs to be routed into the VPN tunnel. | `list(string)` | `[]` | no |
 | <a name="input_static_routes_only"></a> [static\_routes\_only](#input\_static\_routes\_only) | Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP | `bool` | `false` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Map of custom tags for the provisioned resources | `map(string)` | `{}` | no |
