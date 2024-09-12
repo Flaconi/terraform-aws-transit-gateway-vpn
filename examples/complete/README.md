@@ -3,7 +3,10 @@
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5 |
 
 ## Providers
 
@@ -13,6 +16,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_tgw"></a> [tgw](#module\_tgw) | github.com/flaconi/terraform-aws-transit-gateway-hub.git | v1.6.0 |
 | <a name="module_vpn"></a> [vpn](#module\_vpn) | ../../ | n/a |
 
 ## Resources
@@ -28,6 +32,7 @@ No resources.
 | <a name="input_cgw_ip_address"></a> [cgw\_ip\_address](#input\_cgw\_ip\_address) | IP address of the client VPN endpoint | `string` | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Generic name to be given to the provisioned resources | `string` | n/a | yes |
 | <a name="input_transit_gateway_hub_name"></a> [transit\_gateway\_hub\_name](#input\_transit\_gateway\_hub\_name) | Name of the Transit Gateway to attach the VPN to | `string` | n/a | yes |
+| <a name="input_transit_gateway_satellite_account_id"></a> [transit\_gateway\_satellite\_account\_id](#input\_transit\_gateway\_satellite\_account\_id) | AWS account ID for which the module should share TGW resource | `string` | n/a | yes |
 | <a name="input_role_to_assume"></a> [role\_to\_assume](#input\_role\_to\_assume) | IAM role name to assume (eg. ASSUME-ROLE-HUB) | `string` | `""` | no |
 | <a name="input_static_routes_destinations"></a> [static\_routes\_destinations](#input\_static\_routes\_destinations) | List of CIDRs to be routed into the VPN tunnel. | `list(string)` | `[]` | no |
 | <a name="input_static_routes_only"></a> [static\_routes\_only](#input\_static\_routes\_only) | Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP | `bool` | `false` | no |
@@ -42,6 +47,7 @@ No resources.
 | Name | Description |
 |------|-------------|
 | <a name="output_customer_gateway_id"></a> [customer\_gateway\_id](#output\_customer\_gateway\_id) | ID of the Customer Gateway |
+| <a name="output_transit_gateway_id"></a> [transit\_gateway\_id](#output\_transit\_gateway\_id) | ID of the used Transit Gateway |
 | <a name="output_vpn_connection"></a> [vpn\_connection](#output\_vpn\_connection) | VPN connection details |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
