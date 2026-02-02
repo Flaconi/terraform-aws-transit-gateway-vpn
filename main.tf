@@ -14,7 +14,34 @@ resource "aws_vpn_connection" "this" {
   tunnel2_inside_cidr   = var.tunnel2_inside_cidr
   tunnel1_preshared_key = var.tunnel1_preshared_key
   tunnel2_preshared_key = var.tunnel2_preshared_key
-  tags                  = merge(var.tags, { Name = var.name })
+
+  # Tunnel 1 logging options (optional)
+  tunnel1_log_options {
+    dynamic "cloudwatch_log_options" {
+      for_each = var.log_enabled && var.log_group_arn != null && var.log_group_arn != "" ? [1] : []
+
+      content {
+        log_enabled       = true
+        log_group_arn     = var.log_group_arn
+        log_output_format = var.log_output_format
+      }
+    }
+  }
+
+  # Tunnel 2 logging options (optional)
+  tunnel2_log_options {
+    dynamic "cloudwatch_log_options" {
+      for_each = var.log_enabled && var.log_group_arn != null && var.log_group_arn != "" ? [1] : []
+
+      content {
+        log_enabled       = true
+        log_group_arn     = var.log_group_arn
+        log_output_format = var.log_output_format
+      }
+    }
+  }
+
+  tags = merge(var.tags, { Name = var.name })
 }
 
 resource "aws_ec2_transit_gateway_route_table_association" "this" {

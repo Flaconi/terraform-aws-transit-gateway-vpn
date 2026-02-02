@@ -5,6 +5,9 @@ cgw_ip_address = "1.1.1.1"
 
 transit_gateway_hub_name = "test-vpn-tgw"
 static_routes_only       = true
+log_enabled              = false
+log_group_arn            = null
+log_output_format        = "json"
 static_routes_destinations = [
   "192.168.0.0/24",
   "192.168.1.0/24"

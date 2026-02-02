@@ -5,8 +5,8 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 5 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.0 |
 
 ## Providers
 
@@ -33,6 +33,9 @@ No resources.
 | <a name="input_name"></a> [name](#input\_name) | Generic name to be given to the provisioned resources | `string` | n/a | yes |
 | <a name="input_transit_gateway_hub_name"></a> [transit\_gateway\_hub\_name](#input\_transit\_gateway\_hub\_name) | Name of the Transit Gateway to attach the VPN to | `string` | n/a | yes |
 | <a name="input_transit_gateway_satellite_account_id"></a> [transit\_gateway\_satellite\_account\_id](#input\_transit\_gateway\_satellite\_account\_id) | AWS account ID for which the module should share TGW resource | `string` | n/a | yes |
+| <a name="input_log_enabled"></a> [log\_enabled](#input\_log\_enabled) | Whether to enable logging for the Transit Gateway VPN connection. | `bool` | `false` | no |
+| <a name="input_log_group_arn"></a> [log\_group\_arn](#input\_log\_group\_arn) | ARN of an existing CloudWatch Log Group to use when logging is enabled. This module does not create or manage the log group. | `string` | `null` | no |
+| <a name="input_log_output_format"></a> [log\_output\_format](#input\_log\_output\_format) | Output format for VPN logs when logging is enabled (for example: json). | `string` | `"json"` | no |
 | <a name="input_role_to_assume"></a> [role\_to\_assume](#input\_role\_to\_assume) | IAM role name to assume (eg. ASSUME-ROLE-HUB) | `string` | `""` | no |
 | <a name="input_static_routes_destinations"></a> [static\_routes\_destinations](#input\_static\_routes\_destinations) | List of CIDRs to be routed into the VPN tunnel. | `list(string)` | `[]` | no |
 | <a name="input_static_routes_only"></a> [static\_routes\_only](#input\_static\_routes\_only) | Whether the VPN connection uses static routes exclusively. Static routes must be used for devices that don't support BGP | `bool` | `false` | no |
