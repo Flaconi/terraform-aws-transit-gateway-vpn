@@ -15,7 +15,24 @@ resource "aws_vpn_connection" "this" {
   tunnel1_preshared_key = var.tunnel1_preshared_key
   tunnel2_preshared_key = var.tunnel2_preshared_key
 
-  # Tunnel 1 logging options (optional)
+  # Shared cryptographic options for both tunnels
+  tunnel1_ike_versions                 = var.ike_versions
+  tunnel1_phase1_dh_group_numbers      = var.phase1_dh_group_numbers
+  tunnel1_phase1_encryption_algorithms = var.phase1_encryption_algorithms
+  tunnel1_phase1_integrity_algorithms  = var.phase1_integrity_algorithms
+  tunnel1_phase2_dh_group_numbers      = var.phase2_dh_group_numbers
+  tunnel1_phase2_encryption_algorithms = var.phase2_encryption_algorithms
+  tunnel1_phase2_integrity_algorithms  = var.phase2_integrity_algorithms
+
+  tunnel2_ike_versions                 = var.ike_versions
+  tunnel2_phase1_dh_group_numbers      = var.phase1_dh_group_numbers
+  tunnel2_phase1_encryption_algorithms = var.phase1_encryption_algorithms
+  tunnel2_phase1_integrity_algorithms  = var.phase1_integrity_algorithms
+  tunnel2_phase2_dh_group_numbers      = var.phase2_dh_group_numbers
+  tunnel2_phase2_encryption_algorithms = var.phase2_encryption_algorithms
+  tunnel2_phase2_integrity_algorithms  = var.phase2_integrity_algorithms
+
+  # Tunnel 1 options
   tunnel1_log_options {
     dynamic "cloudwatch_log_options" {
       for_each = var.log_enabled && var.log_group_arn != null && var.log_group_arn != "" ? [1] : []
@@ -28,7 +45,7 @@ resource "aws_vpn_connection" "this" {
     }
   }
 
-  # Tunnel 2 logging options (optional)
+  # Tunnel 2 options
   tunnel2_log_options {
     dynamic "cloudwatch_log_options" {
       for_each = var.log_enabled && var.log_group_arn != null && var.log_group_arn != "" ? [1] : []
