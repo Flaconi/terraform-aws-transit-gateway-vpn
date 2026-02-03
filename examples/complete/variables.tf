@@ -45,29 +45,6 @@ variable "static_routes_only" {
   default     = false
 }
 
-variable "log_enabled" {
-  description = "Whether to enable logging for the Transit Gateway VPN connection."
-  type        = bool
-  default     = false
-}
-
-variable "log_group_arn" {
-  description = "ARN of an existing CloudWatch Log Group to use when logging is enabled. This module does not create or manage the log group."
-  type        = string
-  default     = null
-}
-
-variable "log_output_format" {
-  description = "Output format for VPN logs when logging is enabled (for example: json)."
-  type        = string
-  default     = "json"
-
-  validation {
-    condition     = contains(["json", "text"], var.log_output_format)
-    error_message = "log_output_format must be either \"json\" or \"text\"."
-  }
-}
-
 variable "static_routes_destinations" {
   description = "List of CIDRs to be routed into the VPN tunnel."
   type        = list(string)
