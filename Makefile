@@ -149,8 +149,8 @@ test: _pull-tf
 				docker run $$(tty -s && echo "-it" || echo) --rm -v "$(CURRENT_DIR):/t" --workdir "$${DOCKER_PATH}" --entrypoint=rm hashicorp/terraform:$(TF_VERSION) -rf .terraform/ terraform.tfstate terraform.tfstate.backup || true; \
 			else \
 				echo "Destroy failed. You should check for dangling resources."; \
-				exit 1; \
 			fi; \
+      exit 1; \
 		fi; \
 	)
 
