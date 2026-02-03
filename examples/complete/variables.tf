@@ -61,6 +61,11 @@ variable "log_output_format" {
   description = "Output format for VPN logs when logging is enabled (for example: json)."
   type        = string
   default     = "json"
+
+  validation {
+    condition     = contains(["json", "text"], var.log_output_format)
+    error_message = "log_output_format must be either \"json\" or \"text\"."
+  }
 }
 
 variable "static_routes_destinations" {
