@@ -18,6 +18,9 @@ module "vpn" {
   transit_gateway_hub_name       = var.transit_gateway_hub_name
   transit_gateway_hub_account_id = var.allowed_account_id
   static_routes_only             = var.static_routes_only
+  log_enabled                    = var.log_enabled
+  log_group_arn                  = var.log_group_arn
+  log_output_format              = var.log_output_format
   static_routes_destinations     = var.static_routes_destinations
 
   tunnel1_inside_cidr   = var.tunnel1_inside_cidr
