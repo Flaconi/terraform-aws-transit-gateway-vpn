@@ -24,6 +24,7 @@ module "vpn" {
   transit_gateway_hub_account_id = var.allowed_account_id
   static_routes_only             = var.static_routes_only
   log_enabled                    = true
+  log_group_arn                  = aws_cloudwatch_log_group.this.arn
   log_output_format              = "json"
   static_routes_destinations     = var.static_routes_destinations
 
