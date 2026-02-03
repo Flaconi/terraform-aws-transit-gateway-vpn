@@ -58,6 +58,49 @@ variable "static_routes_destinations" {
   default     = []
 }
 
+# Shared tunnel options used for both VPN tunnels
+variable "ike_versions" {
+  description = "List of IKE versions supported by the VPN tunnels. Allowed values: v1, v2. Applied to both Tunnel 1 and Tunnel 2."
+  type        = list(string)
+  default     = null
+}
+
+variable "phase1_dh_group_numbers" {
+  description = "List of DH group numbers for phase 1 of the VPN tunnels. Applied to both Tunnel 1 and Tunnel 2. See aws_vpn_connection documentation for valid values."
+  type        = list(number)
+  default     = null
+}
+
+variable "phase1_encryption_algorithms" {
+  description = "List of encryption algorithms for phase 1 of the VPN tunnels. Applied to both Tunnel 1 and Tunnel 2. See aws_vpn_connection documentation for valid values."
+  type        = list(string)
+  default     = null
+}
+
+variable "phase1_integrity_algorithms" {
+  description = "List of integrity algorithms for phase 1 of the VPN tunnels. Applied to both Tunnel 1 and Tunnel 2. See aws_vpn_connection documentation for valid values."
+  type        = list(string)
+  default     = null
+}
+
+variable "phase2_dh_group_numbers" {
+  description = "List of DH group numbers for phase 2 of the VPN tunnels. Applied to both Tunnel 1 and Tunnel 2. See aws_vpn_connection documentation for valid values."
+  type        = list(number)
+  default     = null
+}
+
+variable "phase2_encryption_algorithms" {
+  description = "List of encryption algorithms for phase 2 of the VPN tunnels. Applied to both Tunnel 1 and Tunnel 2. See aws_vpn_connection documentation for valid values."
+  type        = list(string)
+  default     = null
+}
+
+variable "phase2_integrity_algorithms" {
+  description = "List of integrity algorithms for phase 2 of the VPN tunnels. Applied to both Tunnel 1 and Tunnel 2. See aws_vpn_connection documentation for valid values."
+  type        = list(string)
+  default     = null
+}
+
 # https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnTunnelOptionsSpecification.html
 variable "tunnel1_inside_cidr" {
   description = "A size /30 CIDR block from the 169.254.0.0/16 range"
