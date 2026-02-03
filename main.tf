@@ -35,7 +35,7 @@ resource "aws_vpn_connection" "this" {
   # Tunnel 1 options
   tunnel1_log_options {
     dynamic "cloudwatch_log_options" {
-      for_each = var.log_enabled && var.log_group_arn != null && var.log_group_arn != "" ? [1] : []
+      for_each = var.log_enabled ? [1] : []
 
       content {
         log_enabled       = true
@@ -48,7 +48,7 @@ resource "aws_vpn_connection" "this" {
   # Tunnel 2 options
   tunnel2_log_options {
     dynamic "cloudwatch_log_options" {
-      for_each = var.log_enabled && var.log_group_arn != null && var.log_group_arn != "" ? [1] : []
+      for_each = var.log_enabled ? [1] : []
 
       content {
         log_enabled       = true
